@@ -16,8 +16,8 @@ public class Customer {
 
     @Id
     private String id;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String phone;
-    private LocalDate birth_date;
+    private LocalDate birthDate;
 }

@@ -6,7 +6,7 @@ POST http://localhost:8080/customer
 Content-Type: application/json
 
 {
-    "id": "9",
+    "id": "11",
     "firstName": "Alejandro",
     "lastName": "Navarro",
     "phone": "+50683838383",
@@ -18,7 +18,7 @@ PUT http://localhost:8080/customer
 Content-Type: application/json
 
 {
-    "id": "7",
+    "id": "10",
     "firstName": "Alejandro",
     "lastName": "Navarro Sanchez",
     "phone": "+50683838383",

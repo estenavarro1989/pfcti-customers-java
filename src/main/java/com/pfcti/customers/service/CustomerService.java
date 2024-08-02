@@ -10,7 +10,6 @@ import com.pfcti.customers.repository.CustomerRepository;
 
 import jakarta.transaction.Transactional;
 
-@Transactional
 @Service
 public class CustomerService {
 
@@ -19,8 +18,8 @@ public class CustomerService {
 
     public void save(Customer customer) {
         try {
-            repository.addCustomer(customer.getId(), customer.getFirst_name(), customer.getLast_name(),
-                    customer.getPhone(), customer.getBirth_date());
+            repository.addCustomer(customer.getId(), customer.getFirstName(), customer.getLastName(),
+                    customer.getPhone(), customer.getBirthDate());
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -29,8 +28,8 @@ public class CustomerService {
 
     public void update(Customer customer) {
         try {
-            repository.editCustomer(customer.getId(), customer.getFirst_name(), customer.getLast_name(),
-                    customer.getPhone(), customer.getBirth_date());
+            repository.editCustomer(customer.getId(), customer.getFirstName(), customer.getLastName(),
+                    customer.getPhone(), customer.getBirthDate());
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -46,6 +45,7 @@ public class CustomerService {
         }
     }
 
+    @Transactional
     public List<Customer> getCustomersOrderByBirthDate() {
         try {
             List<Customer> customers = repository.getCustomersOrderByBirthDate();
@@ -56,6 +56,7 @@ public class CustomerService {
         }
     }
 
+    @Transactional
     public List<Customer> getCustomersOrderById() {
         try {
             List<Customer> customers = repository.getCustomersOrderById();
@@ -66,6 +67,7 @@ public class CustomerService {
         }
     }
 
+    @Transactional
     public List<Customer> getCustomersOrderByName() {
         try {
             List<Customer> customers = repository.getCustomersOrderByName();
