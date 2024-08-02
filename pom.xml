@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.pfcti</groupId>
 	<artifactId>customers</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>customers</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Technical Test for PFCTI</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -32,7 +32,16 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

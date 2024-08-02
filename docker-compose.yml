@@ -1,0 +1,27 @@
+services:
+  customer:
+      container_name: customer
+      build:
+          dockerfile: Dockerfile
+      image: customers:latest
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/pfcti
+      ports:
+          - 8080:8080
+      networks:
+          - pfcti-network
+  postgres:
+      image: postgres:16.3-alpine
+      ports:
+        - 5432:5432
+      volumes:
+        - ~/apps/postgres:/var/lib/postgresql@16/data
+      environment:
+        - POSTGRES_PASSWORD=admin
+        - POSTGRES_USER=admin
+        - POSTGRES_DB=pfcti
+      networks:
+          - pfcti-network
+networks:
+    pfcti-network:
+        driver: bridge
