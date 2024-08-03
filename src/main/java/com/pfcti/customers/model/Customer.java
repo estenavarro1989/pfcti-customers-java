@@ -3,8 +3,10 @@ package com.pfcti.customers.model;
 import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
 @Entity
 public class Customer {

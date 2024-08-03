@@ -6,7 +6,7 @@ POST http://localhost:8080/customer
 Content-Type: application/json
 
 {
-    "id": "11",
+    "id": "12",
     "firstName": "Alejandro",
     "lastName": "Navarro",
     "phone": "+50683838383",
@@ -26,7 +26,7 @@ Content-Type: application/json
 }
 
 ### Delete Customer
-DELETE http://localhost:8080/customer/8
+DELETE http://localhost:8080/customer/11
 
 ### Get Customers order by birth date desc
 GET  http://localhost:8080/customer/birthDate
