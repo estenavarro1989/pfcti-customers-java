@@ -37,6 +37,11 @@ public class CustomerController {
         service.delete(id);
     }
 
+    @GetMapping("/{id}")
+    public Customer getCustomerById(@PathVariable String id) {
+        return service.getCustomerById(id);
+    }
+
     @GetMapping("/birthDate")
     public List<Customer> getCustomersOrderByBirthDate() {
         return service.getCustomersOrderByBirthDate();

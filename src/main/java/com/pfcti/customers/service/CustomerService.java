@@ -46,6 +46,17 @@ public class CustomerService {
     }
 
     @Transactional
+    public Customer getCustomerById(String id) {
+        try {
+            List<Customer> customer = repository.getCustomerById(id);
+            return customer.get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Transactional
     public List<Customer> getCustomersOrderByBirthDate() {
         try {
             List<Customer> customers = repository.getCustomersOrderByBirthDate();

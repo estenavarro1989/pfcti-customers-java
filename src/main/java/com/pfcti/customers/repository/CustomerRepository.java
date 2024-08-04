@@ -32,6 +32,9 @@ public interface CustomerRepository extends JpaRepository<Customer, String> {
     @Procedure(value = "delete_customer")
     void deleteCustomer(@Param("p_id") String id);
 
+    @Procedure(value = "get_customer_by_id", outputParameterName = "p_result", refCursor = true)
+    List<Customer> getCustomerById(@Param("p_id") String id);
+
     @Procedure(value = "get_customers_order_by_birth_date_desc", outputParameterName = "p_result", refCursor = true)
     List<Customer> getCustomersOrderByBirthDate();
 
