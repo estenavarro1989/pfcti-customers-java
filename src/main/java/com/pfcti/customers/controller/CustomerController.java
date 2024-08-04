@@ -3,6 +3,8 @@ package com.pfcti.customers.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pfcti.customers.model.Customer;
 import com.pfcti.customers.service.CustomerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
@@ -23,18 +27,21 @@ public class CustomerController {
     private CustomerService service;
 
     @PostMapping
-    public void addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
         service.save(customer);
+        return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public void editCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> editCustomer(@RequestBody Customer customer) {
         service.update(customer);
+        return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable String id) {
+    public ResponseEntity<String> deleteCustomer(@PathVariable String id) {
         service.delete(id);
+        return new ResponseEntity<>(id, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
