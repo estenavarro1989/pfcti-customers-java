@@ -16,7 +16,7 @@ import com.pfcti.customers.model.Customer;
 import com.pfcti.customers.service.CustomerService;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     @Autowired
@@ -50,10 +50,5 @@ public class CustomerController {
     @GetMapping("/name")
     public List<Customer> getCustomersOrderByName() {
         return service.getCustomersOrderByName();
-    }
-
-    @GetMapping("/test")
-    public String test() {
-        return "Hello World from Spring Boot!";
     }
 }
