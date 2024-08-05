@@ -26,10 +26,18 @@ public class CustomerService {
         }
     }
 
-    public void update(Customer customer) {
+    public Customer update(String id, Customer newCustomer, Customer oldCustomer) {
         try {
-            repository.editCustomer(customer.getId(), customer.getFirstName(), customer.getLastName(),
-                    customer.getPhone(), customer.getBirthDate());
+            newCustomer.setId(id);
+            newCustomer.setFirstName(newCustomer.getFirstName() != null ? newCustomer.getFirstName() : oldCustomer.getFirstName());
+            newCustomer.setLastName(newCustomer.getLastName() != null ? newCustomer.getLastName() : oldCustomer.getLastName());
+            newCustomer.setPhone(newCustomer.getPhone() != null ? newCustomer.getPhone() : oldCustomer.getPhone());
+            newCustomer.setBirthDate(newCustomer.getBirthDate() != null ? newCustomer.getBirthDate() : oldCustomer.getBirthDate());
+
+            repository.editCustomer(id, newCustomer.getFirstName(), newCustomer.getLastName(),
+                    newCustomer.getPhone(), newCustomer.getBirthDate());
+
+            return newCustomer;
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

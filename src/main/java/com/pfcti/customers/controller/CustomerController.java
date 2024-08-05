@@ -32,10 +32,12 @@ public class CustomerController {
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
-    @PutMapping
-    public ResponseEntity<Customer> editCustomer(@RequestBody Customer customer) {
-        service.update(customer);
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer> editCustomer(@PathVariable String id, @RequestBody Customer newCustomer) {
+        Customer oldCustomer = getCustomerById(id);
+
+        Customer res = service.update(id, newCustomer, oldCustomer);
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
