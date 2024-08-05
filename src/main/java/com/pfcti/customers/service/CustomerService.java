@@ -3,6 +3,7 @@ package com.pfcti.customers.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.pfcti.customers.model.Customer;
@@ -54,10 +55,13 @@ public class CustomerService {
     }
 
     @Transactional
-    public Customer getCustomerById(String id) {
+    public Customer getCustomerById(String id) throws NotFoundException, Exception {
         try {
             List<Customer> customer = repository.getCustomerById(id);
+            if(customer.size() == 0) throw new NotFoundException();
             return customer.get(0);
+        } catch (NotFoundException e) {
+            throw e;
         } catch (Exception e) {
             e.printStackTrace();
             throw e;

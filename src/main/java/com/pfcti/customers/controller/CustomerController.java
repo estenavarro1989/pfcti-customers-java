@@ -33,7 +33,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> editCustomer(@PathVariable String id, @RequestBody Customer newCustomer) {
+    public ResponseEntity<Customer> editCustomer(@PathVariable String id, @RequestBody Customer newCustomer) throws Exception {
         Customer oldCustomer = getCustomerById(id);
 
         Customer res = service.update(id, newCustomer, oldCustomer);
@@ -47,7 +47,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer getCustomerById(@PathVariable String id) {
+    public Customer getCustomerById(@PathVariable String id) throws Exception {
         return service.getCustomerById(id);
     }
 
