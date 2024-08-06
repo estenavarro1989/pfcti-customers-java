@@ -1,6 +1,7 @@
 package com.pfcti.customers.service;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -11,9 +12,16 @@ import com.pfcti.customers.model.Customer;
 import com.pfcti.customers.repository.CustomerRepository;
 
 import jakarta.transaction.Transactional;
+import org.springframework.context.MessageSource;
 
 @Service
 public class CustomerService {
+
+    MessageSource messageSource = null;
+
+    public CustomerService(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Autowired
     private CustomerRepository repository;
@@ -24,7 +32,8 @@ public class CustomerService {
                     customer.getPhone(), customer.getBirthDate());
         } catch (Exception e) {
             if (e.getClass().getCanonicalName() == "org.springframework.dao.DataIntegrityViolationException") {
-                throw new DataIntegrityViolationException("El id del cliente que desea agregar ya existe");
+                throw new DataIntegrityViolationException(
+                        messageSource.getMessage("api.error.customer.already.registered", null, Locale.ENGLISH));
             }
             throw e;
         }

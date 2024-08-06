@@ -4,8 +4,11 @@ import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.springframework.context.MessageSource;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -21,6 +24,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    MessageSource messageSource = null;
+
+    public GlobalExceptionHandler(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
@@ -75,7 +84,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({ NotFoundException.class })
     public ResponseEntity<Object> notFoundException(NotFoundException ex) {
         List<String> errors = new ArrayList<>();
-        errors.add("El cliente que desea consultar no existe");
+        errors.add(messageSource.getMessage("api.error.customer.doesnt.exist", null, Locale.ENGLISH));
 
         Map<String, List<String>> result = new HashMap<>();
         result.put("errors", errors);

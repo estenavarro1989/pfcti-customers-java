@@ -19,21 +19,21 @@ import lombok.NoArgsConstructor;
 public class Customer {
 
     @Id
-    @NotBlank(message = "El id del cliente es requerido")
-    @Size(max = 50, message = "El máximo de caracteres del id es de 50")
+    @NotBlank(message = "{api.error.customer.id.required}")
+    @Size(max = 50, message = "{api.error.customer.id.length}")
     private String id;
 
-    @NotBlank(message = "El nombre del cliente es requerido")
-    @Size(max = 20, message = "El máximo de caracteres del nombre es de 20")
+    @NotBlank(message = "{api.error.customer.first.name.required}")
+    @Size(max = 20, message = "{api.error.customer.first.name.max.length}")
     private String firstName;
 
-    @NotBlank(message = "El apellido del cliente es requerido")
-    @Size(max = 20, message = "El máximo de caracteres del apellido es de 20")
+    @NotBlank(message = "{api.error.customer.last.name.required}")
+    @Size(max = 20, message = "{api.error.customer.last.name.max.length}")
     private String lastName;
 
-    //@Size(max = 20, message = "El máximo de caracteres del teléfono es de 20") //org.postgresql.util.PSQLException
+    @Size(max = 20, message = "{api.error.customer.phone.max.length}")
     private String phone;
 
-    @Past(message = "La fecha de nacimiento tiene que ser anterior al día de hoy")
+    @Past(message = "{api.error.customer.birth.date.past}")
     private LocalDate birthDate;
 }
