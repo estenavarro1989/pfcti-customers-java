@@ -99,7 +99,7 @@ public class Api {
     }
 
     public static boolean getCustomersList(String orderParam) {
-        String url = baseUrl + "/" + orderParam;
+        String url = baseUrl + "?orderBy=" + orderParam;
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pfcti.customers.model.Customer;
@@ -49,6 +50,20 @@ public class CustomerController {
     @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable String id) throws Exception {
         return service.getCustomerById(id);
+    }
+
+
+    @GetMapping()
+    public ResponseEntity<List<Customer>> getCustomersOrderByBirthDate(@RequestParam("orderBy") String orderBy) {
+        if(orderBy.equals("birthDate")) {
+            return new ResponseEntity<>(service.getCustomersOrderByBirthDate(), HttpStatus.OK);
+        } else if (orderBy.equals("id")) {
+            return new ResponseEntity<>(service.getCustomersOrderById(), HttpStatus.OK);
+        } else if (orderBy.equals("name")) {
+            return new ResponseEntity<>(service.getCustomersOrderByName(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);        
+        }
     }
 
     @GetMapping("/birthDate")
