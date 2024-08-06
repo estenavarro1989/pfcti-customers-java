@@ -55,7 +55,7 @@
 ### Ejecutar la Consola
 
 1. Tener desplegado en docker el proyecto. [Ver Pasos para desplegar el proyecto en docker](#pasos-para-desplegar-el-proyecto-en-docker)
-2. Ir a la carpeta app
+2. Desde el directorio raíz, ir a la carpeta app
 
     `cd app` 
 

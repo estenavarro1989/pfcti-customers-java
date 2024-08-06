@@ -4,7 +4,7 @@ CREATE TABLE customer (
   last_name VARCHAR(20),
   phone VARCHAR(20),
   birth_date DATE,
-  created_at TIMESTAMP WITH TIME ZONE
+  created_at TIMESTAMP WITH TIME ZONE,
   updated_at TIMESTAMP WITH TIME ZONE
 );
 

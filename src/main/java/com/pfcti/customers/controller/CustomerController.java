@@ -54,7 +54,7 @@ public class CustomerController {
 
 
     @GetMapping()
-    public ResponseEntity<List<Customer>> getCustomersOrderByBirthDate(@RequestParam("orderBy") String orderBy) {
+    public ResponseEntity<List<Customer>> listCustomers(@RequestParam("orderBy") String orderBy) {
         if(orderBy.equals("birthDate")) {
             return new ResponseEntity<>(service.getCustomersOrderByBirthDate(), HttpStatus.OK);
         } else if (orderBy.equals("id")) {
@@ -64,20 +64,5 @@ public class CustomerController {
         } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);        
         }
-    }
-
-    @GetMapping("/birthDate")
-    public List<Customer> getCustomersOrderByBirthDate() {
-        return service.getCustomersOrderByBirthDate();
-    }
-
-    @GetMapping("/id")
-    public List<Customer> getCustomersOrderById() {
-        return service.getCustomersOrderById();
-    }
-
-    @GetMapping("/name")
-    public List<Customer> getCustomersOrderByName() {
-        return service.getCustomersOrderByName();
     }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class Customer {
 
     @Id
     @NotBlank(message = "{api.error.customer.id.required}")
-    @Size(max = 50, message = "{api.error.customer.id.length}")
+    @Size(max = 50, message = "{api.error.customer.id.max.length}")
     private String id;
 
     @NotBlank(message = "{api.error.customer.first.name.required}")
@@ -32,6 +33,7 @@ public class Customer {
     private String lastName;
 
     @Size(max = 20, message = "{api.error.customer.phone.max.length}")
+    @Pattern(regexp = "^\\+\\d{11}", message = "{api.error.customer.phone.format}")
     private String phone;
 
     @Past(message = "{api.error.customer.birth.date.past}")
