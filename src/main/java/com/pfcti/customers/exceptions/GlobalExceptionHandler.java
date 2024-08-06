@@ -73,13 +73,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler({ NotFoundException.class })
-    public ResponseEntity<Object> connectionException(NotFoundException ex) {
+    public ResponseEntity<Object> notFoundException(NotFoundException ex) {
         List<String> errors = new ArrayList<>();
         errors.add("El cliente que desea consultar no existe");
 
         Map<String, List<String>> result = new HashMap<>();
         result.put("errors", errors);
 
-        return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 }
