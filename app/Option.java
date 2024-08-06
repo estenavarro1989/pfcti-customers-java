@@ -26,7 +26,7 @@ public class Option {
             }
 
             boolean success = Api.addCustomer(customer);
-            if (success) System.out.print("{\nCliente agregado con éxito");
+            if (success) System.out.print("\nCliente agregado con éxito");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

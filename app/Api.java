@@ -19,7 +19,7 @@ public class Api {
             if (response.statusCode() == 201) {
                 return true;
             } else {
-                System.out.println(response.body());
+                System.out.println(Helper.formatErrors(response.body()));
                 return false;
             }
 
@@ -42,7 +42,7 @@ public class Api {
             if (response.statusCode() == 201) {
                 return true;
             } else {
-                System.out.println(response.body());
+                System.out.println(Helper.formatErrors(response.body()));
                 return false;
             }
 
@@ -65,7 +65,7 @@ public class Api {
             if (response.statusCode() == 201) {
                 return true;
             } else {
-                System.out.println(response.body());
+                System.out.println(Helper.formatErrors(response.body()));
                 return false;
             }
 
@@ -85,7 +85,7 @@ public class Api {
                     .build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             if (response.statusCode() == 200) {
-                System.out.println(response.body());
+                System.out.println(Helper.formatResponse(response.body()));
                 return true;
             } else {
                 System.out.println(response.body());
@@ -108,7 +108,7 @@ public class Api {
                     .build();
             HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             if (response.statusCode() == 200) {
-                System.out.println(response.body());
+                System.out.println(Helper.formatResponse(response.body()));
                 return true;
             } else {
                 System.out.println(response.body());
