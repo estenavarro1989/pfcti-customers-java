@@ -15,9 +15,9 @@ public class Option {
             customer.setFirstName(reader.readLine());
             System.out.print("Apellido del Cliente: ");
             customer.setLastName(reader.readLine());
-            System.out.print("Teléfono del Cliente: ");
+            System.out.print("Teléfono del Cliente (+50688888888): ");
             customer.setPhone(reader.readLine());
-            System.out.print("Fecha de Nacimiento del Cliente(1990-01-01): ");
+            System.out.print("Fecha de Nacimiento del Cliente (1990-01-01): ");
             try {
                 customer.setBirthDate(LocalDate.parse(reader.readLine()));
             } catch (Exception e) {
@@ -46,9 +46,9 @@ public class Option {
             customer.setFirstName(reader.readLine());
             System.out.print("Apellido del Cliente: ");
             customer.setLastName(reader.readLine());
-            System.out.print("Teléfono del Cliente: ");
+            System.out.print("Teléfono del Cliente (+50688888888): ");
             customer.setPhone(reader.readLine());
-            System.out.print("Fecha de Nacimiento del Cliente(1990-01-01): ");
+            System.out.print("Fecha de Nacimiento del Cliente (1990-01-01): ");
             try {
                 customer.setBirthDate(LocalDate.parse(reader.readLine()));
             } catch (Exception e) {
