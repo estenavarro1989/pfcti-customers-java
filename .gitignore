@@ -3,3 +3,4 @@
 /target
 HELP.md
 .vscode
+/app/*.class
